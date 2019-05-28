@@ -1,0 +1,75 @@
+<HTML>
+<HEAD>
+<TITLE>Layout Example</TITLE>
+<SCRIPT type="text/javascript" src="jquery.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="jquery.layout.js"></SCRIPT>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<SCRIPT type="text/javascript">
+$(document).ready(function () {
+	//$('body').layout({ applyDefaultStyles: true });
+      $('body').layout({ applyDemoStyles: true }).sizePane('east', 500);
+	var outerLayout, middleLayout, innerLayout;
+	
+    innerLayout = $('div.ui-layout-east').layout({
+		applyDefaultStyles: true
+		,autoResize:				true	// try to maintain pane-percentages
+
+        ,center__paneSelector:	".ui-layout-center"
+        //,	north__paneSelector:		".inner-north"
+        ,	south__paneSelector:		".ui-layout-south"
+        ,	center__size:				175
+        ,	south__size:				175
+        ,	spacing_open:			10  // ALL panes
+        ,	spacing_closed:			10  // ALL panes
+        ,	east__spacing_closed:	12
+        ,	west__spacing_closed:	12
+    });
+	
+});
+</SCRIPT>
+<style>
+	.middle-center {
+		/* center pane that are 'containers' for a nested layout */
+		padding: 0;
+		border: 0;
+	}
+	.inner-north ,
+	.inner-south {
+		padding: 0;
+		border: 0;
+	}
+</style>
+</HEAD>
+<BODY>
+<DIV class="ui-layout-center">Center
+	<P><A href="http://layout.jquery-dev.net/demos.html">Go to the Demos page</A></P>
+	<P>* Pane-resizing is disabled because ui.draggable.js is not linked</P>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+	<P>* Pane-animation is disabled because ui.effects.js is not linked</P><br/>
+</DIV>
+<DIV class="ui-layout-north">North</DIV>
+<DIV class="ui-layout-south">South</DIV>
+<DIV class="ui-layout-east" id="east">
+	<div class="ui-layout-center"> East - Center </div>
+	<div class="ui-layout-south">  East - South </div>
+</DIV>
+<DIV class="ui-layout-west">West</DIV>
+</BODY>
+</HTML>

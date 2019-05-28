@@ -1,0 +1,123 @@
+14 Dec 2017
+assessment_response_item change field assessment_id to varchar
+charset: latin1
+collation: latin1_swedish_ci
+----------------------------------------------------------------------
+18 Dec 2017
+Added index on table
+
+ALTER TABLE `jdnxaorg_trustbase`.`assessment_registry`
+DROP INDEX `idx_obj`,
+ADD INDEX `idx_obj`(`object_id`) USING BTREE;
+----------------------------------------------------------------------
+
+-------------- 29 Oct 2018 ----------------
+
+ALTER TABLE access_users ENGINE = InnoDB;
+ALTER TABLE assessment_question ENGINE = InnoDB;
+ALTER TABLE assessment_question_dependency ENGINE = InnoDB;
+ALTER TABLE assessment_registry ENGINE = InnoDB;
+ALTER TABLE assessment_request ENGINE = InnoDB;
+ALTER TABLE assessment_response ENGINE = InnoDB;
+ALTER TABLE assessment_response_item ENGINE = InnoDB;
+ALTER TABLE assessment_risk ENGINE = InnoDB;
+ALTER TABLE assessment_section ENGINE = InnoDB;
+ALTER TABLE autoenroll_registry ENGINE = InnoDB;
+ALTER TABLE autoenroll_status ENGINE = InnoDB;
+ALTER TABLE certification_authority ENGINE = InnoDB;
+ALTER TABLE certification_dependency_registry ENGINE = InnoDB;
+ALTER TABLE certification_record ENGINE = InnoDB;
+ALTER TABLE certification_registry ENGINE = InnoDB;
+ALTER TABLE company ENGINE = InnoDB;
+ALTER TABLE controller_registry ENGINE = InnoDB;
+ALTER TABLE data_objects ENGINE = InnoDB;
+ALTER TABLE databreach_registry ENGINE = InnoDB;
+ALTER TABLE datamanager_activity ENGINE = InnoDB;
+ALTER TABLE datamanager_activity_link ENGINE = InnoDB;
+ALTER TABLE datamanager_countries ENGINE = InnoDB;
+ALTER TABLE datamanager_data_controller ENGINE = InnoDB;
+ALTER TABLE datamanager_data_subject_group ENGINE = InnoDB;
+ALTER TABLE datamanager_legal_basis ENGINE = InnoDB;
+ALTER TABLE datamanager_object_container ENGINE = InnoDB;
+ALTER TABLE datamanager_pii_categories ENGINE = InnoDB;
+ALTER TABLE datamanager_purpose ENGINE = InnoDB;
+ALTER TABLE datamanager_purpose_link ENGINE = InnoDB;
+ALTER TABLE datamanager_relationship_links ENGINE = InnoDB;
+ALTER TABLE datamanager_scan_database ENGINE = InnoDB;
+ALTER TABLE datamanager_sources ENGINE = InnoDB;
+ALTER TABLE dev_perm ENGINE = InnoDB;
+ALTER TABLE dev_records ENGINE = InnoDB;
+ALTER TABLE dta_certication_dependency ENGINE = InnoDB;
+ALTER TABLE dta_registry ENGINE = InnoDB;
+ALTER TABLE external_request_registry ENGINE = InnoDB;
+ALTER TABLE file_control ENGINE = InnoDB;
+ALTER TABLE impact ENGINE = InnoDB;
+ALTER TABLE object_permissions ENGINE = InnoDB;
+ALTER TABLE project_registry ENGINE = InnoDB;
+ALTER TABLE relationship_registry ENGINE = InnoDB;
+ALTER TABLE reports ENGINE = InnoDB;
+ALTER TABLE request_request_details ENGINE = InnoDB;
+ALTER TABLE request_request_status ENGINE = InnoDB;
+ALTER TABLE reviews ENGINE = InnoDB;
+ALTER TABLE supplier_relationship_registry ENGINE = InnoDB;
+ALTER TABLE system_alerts ENGINE = InnoDB;
+ALTER TABLE system_certification_registry ENGINE = InnoDB;
+ALTER TABLE system_country_locations ENGINE = InnoDB;
+ALTER TABLE system_log ENGINE = InnoDB;
+ALTER TABLE system_module_registry ENGINE = InnoDB;
+ALTER TABLE system_object_relationship ENGINE = InnoDB;
+ALTER TABLE system_object_value ENGINE = InnoDB;
+ALTER TABLE system_page_registry ENGINE = InnoDB;
+ALTER TABLE trk_log ENGINE = InnoDB;
+-----------------------------------------------------------
+
+ALTER TABLE `jdnxaorg_trustbase`.`access_users` ADD UNIQUE `idx_user` (`identikey`, `userid`); 
+ALTER TABLE `jdnxaorg_trustbase`.`assessment_question` ADD UNIQUE `id_assm_obj` (`identikey`, `assessment_id`, `object_id`);
+assessment_question_dependency - NA
+ALTER TABLE `jdnxaorg_trustbase`.`assessment_registry` DROP INDEX `idx_obj`, ADD INDEX `idx_obj` (`identikey`, `object_id`) USING BTREE;
+ALTER TABLE `jdnxaorg_trustbase`.`assessment_registry` ADD INDEX `idx_obj` (`identikey`, `object_id`) USING BTREE; 
+`assessment_request` - NA
+ALTER TABLE `jdnxaorg_trustbase`.`assessment_section` ADD INDEX `id_pass_obj` (`identikey`, `parent_assessment_id`, `object_id`);
+
+=====================================
+
+INSERT INTO `system_page_registry` (`app`, `pagename`, `filename`, `directory_path`) VALUES ('assessment', 'templateform', 'assessment.templateform.inc.php', '/assessment/');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+====================Login Users=================
+INSERT INTO `jdnxaorg_trustbase`.`access_users` (`userid`, `email`, `first_name`, `last_name`, `company_name`, `password`, `identikey`, `role`, `account_status`, `module_perm`) VALUES ('karen.cheeseman@privacytrust.com', 'karen.cheeseman@privacytrust.com', 'Karen', 'Cheeseman', 'PrivacyTrust', '483296ede6a828b2ab5b092b242b6b65f0fb1e1c', 'kenexus831122', 'DPO', 'active', '{\"datamanager\":\"yes\",\"assessment\":\"yes\",\"datasubjects\":\"yes\",\"consentmanager\":\"yes\",\"databreach\":\"yes\",\"cookiemanager\":\"yes\"}');
+INSERT INTO `jdnxaorg_trustbase`.`access_users` (`userid`, `email`, `first_name`, `last_name`, `company_name`, `password`, `identikey`, `role`, `account_status`, `module_perm`) VALUES ('elena.stepanova@privacytrust.com', 'elena.stepanova@privacytrust.com', 'Elena', 'Stepanova', 'PrivacyTrust', '5c037f738b73bd3b0a30853f91823f03bb999484', 'kenexus831122', 'DPO', 'active', '{\"datamanager\":\"yes\",\"assessment\":\"yes\",\"datasubjects\":\"yes\",\"consentmanager\":\"yes\",\"databreach\":\"yes\",\"cookiemanager\":\"yes\"}');
+
+INSERT INTO `jdnxaorg_trustbase`.`access_users` (`userid`, `email`, `first_name`, `last_name`, `company_name`, `password`, `identikey`, `role`, `account_status`, `module_perm`) VALUES ('paul.webbjones@privacytrust.com', 'paul.webbjones@privacytrust.com', 'Paul', 'Webbjones', 'PrivacyTrust', '657038d58d1d6b7cf98203ddc153e6a9b8f6e7df', 'kenexus831122', 'DPO', 'active', '{\"datamanager\":\"yes\",\"assessment\":\"yes\",\"datasubjects\":\"yes\",\"consentmanager\":\"yes\",\"databreach\":\"yes\",\"cookiemanager\":\"yes\"}');
+
+INSERT INTO `jdnxaorg_trustbase`.`access_users` (`userid`, `email`, `first_name`, `last_name`, `company_name`, `password`, `identikey`, `role`, `account_status`, `module_perm`) VALUES ('mauro.narduzzo@privacytrust.com', 'mauro.narduzzo@privacytrust.com', 'Mauro', 'Narduzzo', 'PrivacyTrust', '45baf2534b7380d696da9f1b515da6af9d046343', 'kenexus831122', 'DPO', 'active', '{\"datamanager\":\"yes\",\"assessment\":\"yes\",\"datasubjects\":\"yes\",\"consentmanager\":\"yes\",\"databreach\":\"yes\",\"cookiemanager\":\"yes\"}');
+
+
+karen.cheeseman@privacytrust.com - Ksh1ne@2M
+elena.stepanova@privacytrust.com - W1ngs3*Up
+
+paul.webbjones@privacytrust.com -  We@ther$*26
+mauro.narduzzo@privacytrust.com -  Sk12yRe$D

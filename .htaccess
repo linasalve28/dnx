@@ -1,0 +1,6 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+RewriteRule ^controller/([a-zA-Z-/]+)$ controller.php?page=$1&%{QUERY_STRING} [L,QSA]
+RewriteRule ^ax/([a-zA-Z-/]+)$ ajax.controller.php?page=$1&%{QUERY_STRING} [L,QSA]
